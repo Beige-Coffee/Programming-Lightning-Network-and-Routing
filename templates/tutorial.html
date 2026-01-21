@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tutorial.title }} - Lightning Network Routing</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">Back to Chapters</a>
+            <h1>Chapter {{ tutorial.id }}: {{ tutorial.title }}</h1>
+            <p class="progress">{{ tutorial.id }} of {{ total }}</p>
+        </header>
+        
+        <main class="tutorial-content">
+            <section class="content-section">
+                <div class="tutorial-text">
+                    {% if tutorial.content %}
+                        {{ tutorial.content | safe }}
+                    {% else %}
+                        <p class="placeholder">Tutorial content coming soon...</p>
+                    {% endif %}
+                </div>
+            </section>
+            
+            <section class="code-section">
+                <h3>Code Exercise</h3>
+                <textarea id="code-editor" spellcheck="false">{{ tutorial.code }}</textarea>
+                <div class="button-row">
+                    <button id="run-btn" onclick="runCode()">Run Code</button>
+                    <button id="reset-btn" onclick="resetCode()">Reset</button>
+                </div>
+                <div class="output-section">
+                    <h4>Output</h4>
+                    <pre id="output"></pre>
+                </div>
+            </section>
+        </main>
+        
+        <nav class="tutorial-nav">
+            {% if prev_id %}
+            <a href="/tutorial/{{ prev_id }}" class="nav-btn prev">Previous</a>
+            {% else %}
+            <span class="nav-btn disabled">Previous</span>
+            {% endif %}
+            
+            {% if next_id %}
+            <a href="/tutorial/{{ next_id }}" class="nav-btn next">Next</a>
+            {% else %}
+            <span class="nav-btn disabled">Next</span>
+            {% endif %}
+        </nav>
+        
+        <footer>
+            <p>Lightning Network Routing Tutorial</p>
+        </footer>
+    </div>
+    
+    <script>
+        const originalCode = `{{ tutorial.code | safe }}`;
+        
+        async function runCode() {
+            const code = document.getElementById('code-editor').value;
+            const output = document.getElementById('output');
+            const runBtn = document.getElementById('run-btn');
+            
+            runBtn.disabled = true;
+            runBtn.textContent = 'Running...';
+            output.textContent = 'Compiling and running...';
+            
+            try {
+                const response = await fetch('/run', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code })
+                });
+                
+                const result = await response.json();
+                output.textContent = result.output || '(No output)';
+                output.className = result.success ? 'success' : 'error';
+            } catch (err) {
+                output.textContent = 'Error: ' + err.message;
+                output.className = 'error';
+            } finally {
+                runBtn.disabled = false;
+                runBtn.textContent = 'Run Code';
+            }
+        }
+        
+        function resetCode() {
+            document.getElementById('code-editor').value = originalCode;
+            document.getElementById('output').textContent = '';
+            document.getElementById('output').className = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #30363d;
+}
+
+header h1 {
+    color: #f0883e;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #8b949e;
+    font-size: 1.1rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: #58a6ff;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.progress {
+    color: #8b949e;
+    font-size: 0.9rem;
+}
+
+.tutorial-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tutorial-list h2 {
+    color: #f0883e;
+    margin-bottom: 1rem;
+}
+
+.tutorial-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.tutorial-card:hover {
+    border-color: #f0883e;
+    transform: translateX(4px);
+}
+
+.chapter-number {
+    color: #f0883e;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.chapter-title {
+    font-size: 1.25rem;
+    color: #c9d1d9;
+    margin-top: 0.25rem;
+}
+
+.tutorial-content {
+    display: grid;
+    gap: 2rem;
+}
+
+.content-section {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.tutorial-text {
+    line-height: 1.8;
+}
+
+.placeholder {
+    color: #8b949e;
+    font-style: italic;
+}
+
+.code-section {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.code-section h3 {
+    color: #f0883e;
+    margin-bottom: 1rem;
+}
+
+#code-editor {
+    width: 100%;
+    min-height: 200px;
+    background: #0d1117;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 1rem;
+    font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+    tab-size: 4;
+}
+
+#code-editor:focus {
+    outline: none;
+    border-color: #58a6ff;
+}
+
+.button-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#run-btn {
+    background: #238636;
+    color: white;
+}
+
+#run-btn:hover:not(:disabled) {
+    background: #2ea043;
+}
+
+#run-btn:disabled {
+    background: #1a4d26;
+    cursor: not-allowed;
+}
+
+#reset-btn {
+    background: #30363d;
+    color: #c9d1d9;
+}
+
+#reset-btn:hover {
+    background: #3d444d;
+}
+
+.output-section {
+    margin-top: 1.5rem;
+}
+
+.output-section h4 {
+    color: #8b949e;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+#output {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 1rem;
+    font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+    font-size: 13px;
+    min-height: 80px;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+#output.success {
+    border-color: #238636;
+}
+
+#output.error {
+    border-color: #f85149;
+    color: #f85149;
+}
+
+.tutorial-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #30363d;
+}
+
+.nav-btn {
+    padding: 0.75rem 1.5rem;
+    background: #21262d;
+    color: #c9d1d9;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.nav-btn:hover:not(.disabled) {
+    background: #30363d;
+}
+
+.nav-btn.disabled {
+    color: #484f58;
+    cursor: not-allowed;
+}
+
+footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #30363d;
+    text-align: center;
+    color: #8b949e;
+    font-size: 0.9rem;
+}
