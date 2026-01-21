@@ -1,4 +1,4 @@
-modules = ["python-3.11", "rust-stable"]
+modules = ["rust-stable"]
 [agent]
 expertMode = true
 
