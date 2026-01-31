@@ -206,3 +206,8 @@ Of course, another option is simply that Alice and Bob exchange their public key
 <p align="center" style="width: 50%; max-width: 300px;">
   <img src="./tutorial_images/text_messages.png" alt="text_messages" width="70%" height="auto">
 </p>
+
+
+Since the Noise Protocol is meant to be flexible and highly customizable for various purposes, the handshake phase varies, depending on the use case. For example, the Noise Protocol defines two types of handshake patters: 
+- **One-Way**: Used to establish a connection whereby only one party is able to send encrypted messages. For instance, one party wants to send another encrypted files.
+- **Two-Way**: Used for interative protocols where two parties send and receive encrypted messages. For instance, the Lightning Network!
