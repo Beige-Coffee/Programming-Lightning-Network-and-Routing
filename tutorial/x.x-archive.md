@@ -211,3 +211,16 @@ Of course, another option is simply that Alice and Bob exchange their public key
 Since the Noise Protocol is meant to be flexible and highly customizable for various purposes, the handshake phase varies, depending on the use case. For example, the Noise Protocol defines two types of handshake patters: 
 - **One-Way**: Used to establish a connection whereby only one party is able to send encrypted messages. For instance, one party wants to send another encrypted files.
 - **Two-Way**: Used for interative protocols where two parties send and receive encrypted messages. For instance, the Lightning Network!
+
+
+Now that Alice and Bob have completed the handshake phase of the Noise Protocol, they are ready to move to the messaging phase. According to [BOLT 1](https://github.com/lightning/bolts/blob/master/01-messaging.md#the-init-message) the ***first*** message they will send to each other is the `init` message. You can think of this message as *initializing* your connection with your parter, informing them which features their Lightning node supports and, more importantly, requires.
+
+Per [BOLT 9](https://github.com/lightning/bolts/blob/master/09-features.md), each feature has **two bits** that can be used to signal if a node supports or requires that feature. If a node requires the feautre, it will set that feature's **even** bit. If it supports the feature but does not require its connections to support it, then it will set the feature's corresponding **odd** bit. To remember this rule, the saying "it's okay to be odd" has been popularized.
+
+To signal which features a node supports, it will use a **variable-length bit vector**, encoded as big-endian. By encoding the data in big-endian, nodes can use the minimum amount of byte data to encode their feature support, since bits are read from right-to-left. For example, consider the below byte array.
+
+```
+0000 1000 1010 0000
+```
+
+Since 
